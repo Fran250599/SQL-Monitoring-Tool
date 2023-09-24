@@ -15,14 +15,31 @@
     <!-- Option 2: Separate Popper and Bootstrap JS -->
 
     <div class="card">
-        <h5 class="card-header">Grafico con ChartJS</h5>
+        <h5 class="card-header">Grafico barras con ChartJS</h5>
         <div class="card-body">
             <div>
                 <div class="row">
                     <div class="col-lg-2">
                         <button class="btn btn-primary" onClick="CargarDatosGraficoBar()">Actualizar graficos</button>
 
-                        <canvas id="myBarChart" width="400" height="400"></canvas>
+                        <canvas id="myBarChart" width="800" height="800"></canvas>
+
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
+    <div class="card">
+        <h5 class="card-header">Grafico lineas con ChartJS</h5>
+        <div class="card-body">
+            <div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <button class="btn btn-primary" onClick="CargarLineChart()">Actualizar grafico lineas</button>
+
+                        <canvas id="myLineChart" width="800" height="800"></canvas>
 
                     </div>
                 </div>
@@ -93,6 +110,56 @@
                 }
                 
                 );
+            });
+        }
+
+        function CargarLineChart(){
+            //dummy data for a line chart
+            var data = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: "Uso de la base de datos",
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(75, 192, 192, 0.4)",
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderCapStyle: "butt",
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: "miter",
+                        pointBorderColor: "rgba(75, 192, 192, 1)",
+                        pointBackgroundColor: "#fff",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(75, 192, 192, 1)",
+                        pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 1,
+                        pointHitRadius: 10,
+                        data: [65, 59, 80, 81, 56, 55, 40]
+                    }
+                ]
+            };
+
+            // Get the canvas element
+            var ctx = document.getElementById("myLineChart").getContext("2d");
+
+            // Create a new line chart
+            var myLineChart = new Chart(ctx, {
+                type: "line",
+                data: data,
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }
+                        ]
+                    }
+                }
             });
         }
     </script>
