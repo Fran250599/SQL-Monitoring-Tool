@@ -9,6 +9,7 @@
 		    $this->servidor = "localhost";
 			$this->usuario = "root";
 			$this->contrasena = "";
+			//Name of the database created in PHP admin
 			$this->basedatos = "bd_grafico";
 		}
 		function conectar(){
