@@ -41,6 +41,10 @@
 
                         <canvas id="myLineChart" width="800" height="800"></canvas>
 
+                        <button class="btn btn-primary" onClick="CargarMidPieChart()"> Pie Chart </button>
+
+                        <canvas id="midPieChart" width="800" height="800"></canvas>
+
                     </div>
                 </div>
             </div>
@@ -161,6 +165,28 @@
                     }
                 }
             });
+        }
+
+        function CargarMidPieChart(){
+            var ctx = document.getElementById('midPieChart').getContext('2d');
+            var data = {
+            labels: ['A', 'B', 'C'],
+            datasets: [{
+                data: [30, 40, 30],
+                backgroundColor: ['red', 'yellow', 'green']
+            }]
+            };
+
+            var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: {
+                circumference: 180,
+                rotation: -90,
+            }
+            });
+
+
         }
     </script>
   </body>
