@@ -20,15 +20,18 @@
             <div>
                 <div class="row">
                     <div class="col-lg-2">
-                        <button class="btn btn-primary" onClick="CargarDatosGraficoBar()">Actualizar grafico</button>
+                        <button class="btn btn-primary" onClick="CargarDatosGraficoBar()">Actualizar graficos</button>
 
                         <canvas id="myBarChart" width="400" height="400"></canvas>
+
                     </div>
                 </div>
             </div>
            
         </div>
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -69,19 +72,27 @@
                 var ctx = document.getElementById("myBarChart").getContext("2d");
 
                 // Create a new bar chart
-                var myBarChart = new Chart(ctx, {
-                    type: 'bar',
+                var myBarChart = new Chart(ctx, 
+                // Given the previous data, please create an horizontal
+                // bar chart
+                {
+                    type: "bar",
                     data: data,
                     options: {
+                        indexAxis: "y",
                         scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
+                            yAxes: [
+                                {
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
                                 }
-                            }]
+                            ]
                         }
                     }
-                });
+                }
+                
+                );
             });
         }
     </script>
