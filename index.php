@@ -20,7 +20,7 @@
             <div>
                 <div class="row">
                     <div class="col-lg-2">
-                        <button class="btn btn-primary" onClick="CargarDatosGraficoBar()">Grafico</button>
+                        <button class="btn btn-primary" onClick="CargarDatosGraficoBar()">Actualizar grafico</button>
 
                         <canvas id="myBarChart" width="400" height="400"></canvas>
                     </div>
@@ -36,43 +36,52 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
  <script>
         // Sample data for the bar chart
-        var data = {
-            labels: ["January", "February", "March", "April", "May"],
-            datasets: [
-                {
-                    label: "Monthly Sales",
-                    backgroundColor: "rgba(75, 192, 192, 0.2)",
-                    borderColor: "rgba(75, 192, 192, 1)",
-                    borderWidth: 1,
-                    data: [65, 59, 80, 81, 56]
-                }
-            ]
-        };
-
-        // Get the canvas element
-        var ctx = document.getElementById("myBarChart").getContext("2d");
-
-        // Create a new bar chart
-        var myBarChart = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
+       
 
         function CargarDatosGraficoBar(){
             $.ajax({
                 url:'controler_graphic.php',
                 type:'POST',
             }).done(function(resp){
-                alert(resp);
+                var data = JSON.parse(resp);
+
+                var titles = [];
+                var values = [];
+
+                for (var i = 0; i < data.length; i++) {
+                    titles.push(data[i][1]);
+                    values.push(data[i][2]);
+                }
+                var data = {
+                    labels: titles,
+                    datasets: [
+                        {
+                            label: "Productos",
+                            backgroundColor: "rgba(75, 192, 192, 0.2)",
+                            borderColor: "rgba(75, 192, 192, 1)",
+                            borderWidth: 1,
+                            data: values
+                        }
+                    ]
+                };
+
+                // Get the canvas element
+                var ctx = document.getElementById("myBarChart").getContext("2d");
+
+                // Create a new bar chart
+                var myBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
             });
         }
     </script>
