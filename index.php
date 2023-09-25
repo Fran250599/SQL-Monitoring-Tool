@@ -14,43 +14,81 @@
     <h1>SQL monitoring tool</h1>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
 
-    <div class="card">
-        <h5 class="card-header">Grafico barras con ChartJS</h5>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-lg-2">
-                        <button class="btn btn-primary" onClick="CargarDatosGraficoBar()">Actualizar graficos</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <h5 class="card-header">Grafico barras con ChartJS</h5>
+                    <div class="card-body">
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <button class="btn btn-primary" onClick="CargarDatosGraficoBar()">Actualizar graficos</button>
 
-                        <canvas id="myBarChart" width="800" height="800"></canvas>
+                                    <canvas id="myBarChart"></canvas>
 
+                                </div>
+                            </div>
+                        </div>
+                    
                     </div>
                 </div>
             </div>
-           
+            <div class="col-sm">
+                <span>Tabla</span>
+            </div>
         </div>
     </div>
 
-    <div class="card">
-        <h5 class="card-header">Grafico lineas con ChartJS</h5>
-        <div class="card-body">
-            <div>
-                <div class="row">
-                    <div class="col-lg-2">
-                        <button class="btn btn-primary" onClick="CargarLineChart()">Actualizar grafico lineas</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <h5 class="card-header">Grafico barras con ChartJS</h5>
+                    <div class="card-body">
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    
+                                    <button class="btn btn-primary" onClick="CargarLineChart()">Actualizar grafico lineas</button>
 
-                        <canvas id="myLineChart" width="800" height="800"></canvas>
+                                    <canvas id="myLineChart" width="800" height="800"></canvas>
 
-                        <button class="btn btn-primary" onClick="CargarMidPieChart()"> Pie Chart </button>
-
-                        <canvas id="midPieChart" width="800" height="800"></canvas>
-
+                                </div>
+                            </div>
+                        </div>
+                    
                     </div>
                 </div>
             </div>
-           
+            <div class="col-sm">
+                <span>Tabla</span>
+            </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <h5 class="card-header">Grafico barras con ChartJS</h5>
+                    <div class="card-body">
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <button class="btn btn-primary" onClick="CargarMidPieChart()"> Pie Chart </button>
+                                    <canvas id="midPieChart" width="800" height="800"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
 
 
 
@@ -96,9 +134,11 @@
                 var myBarChart = new Chart(ctx, 
                 // Given the previous data, please create an horizontal
                 // bar chart
+                
                 {
                     type: "bar",
                     data: data,
+
                     options: {
                         indexAxis: "y",
                         scales: {
